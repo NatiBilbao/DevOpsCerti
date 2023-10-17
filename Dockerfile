@@ -5,7 +5,7 @@ FROM openjdk:18
 WORKDIR /app
 
 # Copia el archivo JAR de tu proyecto al contenedor
-COPY /out/artifacts/DevOpsCerti_jar app.jar
+COPY /out/artifacts/DevOpsCerti.jar app.jar
 
 # Expón el puerto en el que se ejecutará tu aplicación (ajusta el número de puerto si es necesario)
 EXPOSE 8080
