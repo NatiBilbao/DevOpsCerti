@@ -1,12 +1,28 @@
 version: '3'
+
 services:
-  mysql:
-    image: mysql:latest
+  db:
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: 32492jh.
-  your-app:
-    build: .
-    depends_on:
-      - mysql
+      MYSQL_DATABASE: DevOps
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/DevOps
+      DATABASE_USER: root
+      DATABASE_PASSWORD: 32492jh.
+
+volumes:
+  db_data:

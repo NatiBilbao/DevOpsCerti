@@ -1,8 +1,15 @@
-# Usa una imagen base de Java
+# Usa una imagen base de Java (puedes especificar la versión que necesites)
 FROM openjdk:18
 
-# Copia el archivo JAR de tu proyecto al contenedor
-COPY out/artifacts/YourProjectName/YourProjectName.jar /app.jar
+# Establece el directorio de trabajo en /app
+WORKDIR /app
 
-# Comando para ejecutar la aplicación cuando se inicia el contenedor
-CMD ["java", "-jar", "/app.jar"]
+# Copia el archivo JAR de tu proyecto al contenedor
+COPY target/DevOpsCerti.jar app.jar
+
+# Expón el puerto en el que se ejecutará tu aplicación (ajusta el número de puerto si es necesario)
+EXPOSE 8080
+
+# Comando para ejecutar tu aplicación cuando se inicie el contenedor
+CMD ["java", "-jar", "app.jar"]
+
