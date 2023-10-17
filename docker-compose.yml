@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 32492jh.
+  your-app:
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - "3306:3306"
